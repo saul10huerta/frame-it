@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-
+const Item = require('./Item');
 const { Schema } = mongoose;
 
-const itemSchema = new Schema({
+const orderSchema = new Schema({
   seller: {
     type: String,
     required: true,
@@ -18,7 +18,7 @@ const itemSchema = new Schema({
     required: true,
     min: 0.99
   },
-  items: [{Item}]
+  items: []
 });
 
 const Order = mongoose.model('Order', orderSchema);

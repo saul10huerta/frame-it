@@ -9,14 +9,13 @@ const typeDefs = gql`
     quantity: Int
     status: String
     likes: Int
-    dislikes: Int
   }
 
   type User {
     firstName: String
     lastName: String
     email: String
-    items: [Item]
+    
   }
 
   type Auth {
