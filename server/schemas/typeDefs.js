@@ -9,7 +9,6 @@ const typeDefs = gql`
     quantity: Int
     status: String
     likes: Int
-    dislikes: Int
   }
 
   type User {
