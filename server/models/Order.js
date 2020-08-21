@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const itemSchema = new Schema({
+const orderSchema = new Schema({
   seller: {
     type: String,
     required: true,
