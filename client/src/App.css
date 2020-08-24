@@ -40,3 +40,8 @@
 .card-columns {
   column-count: 3;
 }
+/* @media (max-width: 700px) {
+  .card-columns {
+    column-count: 3;
+  }
+} */
