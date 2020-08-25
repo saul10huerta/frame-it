@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Item = require('./Item');
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
@@ -18,7 +18,7 @@ const orderSchema = new Schema({
     required: true,
     min: 0.99
   },
-  items: [{Item}]
+  items: []
 });
 
 const Order = mongoose.model('Order', orderSchema);
