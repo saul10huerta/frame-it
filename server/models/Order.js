@@ -18,7 +18,7 @@ const orderSchema = new Schema({
     required: true,
     min: 0.99
   },
-  items: [{Item}]
+  items: []
 });
 
 const Order = mongoose.model('Order', orderSchema);
