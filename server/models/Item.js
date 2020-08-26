@@ -28,11 +28,6 @@ const itemSchema = new Schema({
     type: Number,
     min: 0,
     default: 0
-  },
-  dislikes: {
-    type: Number,
-    min: 0,
-    default: 0
   }
 });
 
