@@ -10,18 +10,21 @@ import Feed from './components/Feed'
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      {/* <Feed /> */}
       <Router>
+        <Header />
+        {/* <Feed /> */}
+
         <div>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
+            <Route exact path='/profile' component={Profile} />
           </Switch>
         </div>
       </Router>

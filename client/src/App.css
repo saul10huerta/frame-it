@@ -17,12 +17,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -38,22 +32,18 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* header h1 {
+  border-bottom: 2px solid var(--mainDark);
+  
+} */
 
 .card-columns {
   column-count: 3;
 }
 .submitButton {
-  background-color: var(--secondaryBlue);
+  background-color: white;
   border:2px solid var(--secondaryBlue);
-  color: var(--primaryBlue)
+  color: var(--mainDark)
 }
 .likeButton {
   color: var(--mainDark);
@@ -67,5 +57,19 @@
 @media (min-width: 700px) {
   .loginForm {
     margin: 0 10% 0 10%;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
