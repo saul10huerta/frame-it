@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button, Container, Row, Col, Image } from 'react-bootstrap';
-import photoOne from '../../assets/images/James Hall/JamesHall_1.jpg'
-import photoTwo from '../../assets/images/James Hall/JamesHall_2.jpg'
-// import '../../App.css';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import photoOne from '../assets/images/James Hall/JamesHall_1.jpg';
+import photoTwo from '../assets/images/James Hall/JamesHall_2.jpg';
 
 
-const Feed = () => {
+
+const Profile = () => {
+
+
     return (
         <div>
             <Container fluid>
@@ -56,4 +58,4 @@ const Feed = () => {
     )
 }
 
-export default Feed;
+export default Profile;
