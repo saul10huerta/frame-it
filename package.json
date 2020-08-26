@@ -1,0 +1,31 @@
+{
+  "name": "frame-it",
+  "version": "1.0.0",
+  "description": "An app where local artists can display art they have created and showcase for other local artist to buy. Displaying the art in an instagram-y way plus a buying button/option for interested artists to buy.",
+  "main": "index.js",
+  "dependencies": {
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saul10huerta/frame-it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saul10huerta/frame-it/issues"
+  },
+  "homepage": "https://github.com/saul10huerta/frame-it#readme"
+}
