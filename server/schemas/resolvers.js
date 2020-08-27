@@ -18,6 +18,12 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
         },
+        users: async () => {
+            return User.find()
+            .select('-__v -password');
+            // .populate('friends')
+            // .populate('thoughts');
+        },
     },
     Mutation: {
         login: async (parent, { email, password }) => {
@@ -35,6 +41,12 @@ const resolvers = {
       
             const token = signToken(user);
       
+            return { token, user };
+          },
+          addUser: async (parent, args) => {
+            const user = await User.create(args);
+            const token = signToken(user);
+
             return { token, user };
           }
           
