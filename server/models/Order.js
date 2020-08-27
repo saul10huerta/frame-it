@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Item = require('./Item');
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({

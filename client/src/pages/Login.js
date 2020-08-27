@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
+<<<<<<< HEAD
 // import { useMutation } from '@apollo/react-hooks';
 // import { LOGIN_USER } from '../utils/mutations';
 // import Auth from '../utils/auth';
@@ -38,13 +39,57 @@ const Login = () => {
 //       email: '',
 //       password: '',
 //     });
+=======
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+
+
+const Login = () => {
+   const [formState, setFormState] = useState({ email: '', password: '' });
+
+   const[login, { error }] = useMutation(LOGIN_USER);
+console.log("Login");
+  // update state based on form input changes
+   const handleChange = (event) => {
+     const { name, value } = event.target;
+
+     setFormState({
+       ...formState,
+       [name]: value,
+     });
+   };
+
+//   // submit form
+   const handleFormSubmit = async (event) => {
+     event.preventDefault();
+
+     try {
+       const { data } = await login({
+         variables: { ...formState }
+       });
+       Auth.login(data.login.token);
+       console.log(data);
+     } catch (e) {
+       console.error(e);
+     }
+//     // clear form values
+     setFormState({
+       email: '',
+       password: '',
+     });
+>>>>>>> russell
 //   };    
     return (
         <main>
             <Card className='loginForm' md>
                 <Card.Header>Login</Card.Header>
                 <Card.Body>
+<<<<<<< HEAD
                     <Form>
+=======
+                    <Form onSubmit={handleFormSubmit}>
+>>>>>>> russell
                         <Form.Group controlId='formLoginEmail'>
                             <Form.Label>Email</Form.Label>
                             <Form.Control type='email' placeholder='Your email' id='email' name='email' />
@@ -62,5 +107,9 @@ const Login = () => {
         </main>
     )
 }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> russell
 
 export default Login;
