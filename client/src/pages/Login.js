@@ -6,10 +6,10 @@ import Auth from '../utils/auth';
 
 
 const Login = () => {
-   const [formState, setFormState] = useState({ email: '', password: '' });
+    const [formState, setFormState] = useState({ email: '', password: '' });
 
-   const[login, { error }] = useMutation(LOGIN_USER);
-console.log("Login");
+    const[login, { error }] = useMutation(LOGIN_USER);
+    console.log("Login");
   // update state based on form input changes
    const handleChange = (event) => {
      const { name, value } = event.target;
@@ -21,13 +21,14 @@ console.log("Login");
    };
 
 //   // submit form
-   const handleFormSubmit = async (event) => {
+   const handleFormSubmit = async event => {
      event.preventDefault();
 
      try {
        const { data } = await login({
          variables: { ...formState }
        });
+       
        Auth.login(data.login.token);
        console.log(data);
      } catch (e) {
@@ -38,7 +39,7 @@ console.log("Login");
        email: '',
        password: '',
      });
-//   };    
+    };    
     return (
         <main>
             <Card className='loginForm' md>
@@ -60,8 +61,7 @@ console.log("Login");
                 </Card.Body>
             </Card>
         </main>
-    )
-}
-}
+    );
+};
 
 export default Login;
