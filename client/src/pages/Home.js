@@ -3,7 +3,7 @@ import Feed from '../components/Feed';
 
 const Home = () => {
 
-
+console.log("Home.js");
     return(
         <main>
             <Feed />

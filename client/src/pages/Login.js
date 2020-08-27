@@ -9,7 +9,7 @@ const Login = () => {
    const [formState, setFormState] = useState({ email: '', password: '' });
 
    const[login, { error }] = useMutation(LOGIN_USER);
-
+console.log("Login");
   // update state based on form input changes
    const handleChange = (event) => {
      const { name, value } = event.target;
@@ -38,13 +38,13 @@ const Login = () => {
        email: '',
        password: '',
      });
-   };    
+//   };    
     return (
         <main>
             <Card className='loginForm' md>
                 <Card.Header>Login</Card.Header>
                 <Card.Body>
-                    <Form>
+                    <Form onSubmit={handleFormSubmit}>
                         <Form.Group controlId='formLoginEmail'>
                             <Form.Label>Email</Form.Label>
                             <Form.Control type='email' placeholder='Your email' id='email' name='email' />
@@ -61,6 +61,7 @@ const Login = () => {
             </Card>
         </main>
     )
+}
 }
 
 export default Login;
