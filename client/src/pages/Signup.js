@@ -42,6 +42,14 @@ const Signup = () => {
             <Card.Header>Signup</Card.Header>
             <Card.Body>
                 <Form>
+                    <Form.Group>
+                        <Form.Label >First Name</Form.Label>
+                        <Form.Control type='input' placeholder='Your first name' id='firstName' name='firstName' />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label >Last Name</Form.Label>
+                        <Form.Control type='input' placeholder='Your last name' id='lastName' name='lastName' />
+                    </Form.Group>
                     <Form.Group controlId='formSignupEmail'>
                         <Form.Label >Email</Form.Label>
                         <Form.Control type='email' placeholder='Your email' id='email' name='email' />
