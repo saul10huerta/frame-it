@@ -42,13 +42,22 @@ const resolvers = {
             const token = signToken(user);
       
             return { token, user };
+<<<<<<< HEAD
         },
         addUser: async (parent, args) => {
+=======
+          },
+          addUser: async (parent, args) => {
+>>>>>>> russell
             const user = await User.create(args);
             const token = signToken(user);
 
             return { token, user };
+<<<<<<< HEAD
         }
+=======
+          }
+>>>>>>> russell
           
     }
 };
