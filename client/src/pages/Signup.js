@@ -6,7 +6,7 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '', email: '', password: '', firstName: '', lastName: '' });
   const [addUser, { error }] = useMutation(ADD_USER);
 
   // update state based on form input changes
@@ -30,7 +30,7 @@ const Signup = () => {
         variables: { ...formState }
       });
       Auth.login(data.addUser.token);
-    //   console.log(data);
+      console.log(data);
     } catch (e) {
       console.error(e);
     }
@@ -44,23 +44,23 @@ const Signup = () => {
                 <Form onSubmit={handleFormSubmit}>
                     <Form.Group>
                         <Form.Label >User Name</Form.Label>
-                        <Form.Control type='input' placeholder='Your user name' id='userName' name='userName' />
+                        <Form.Control type='input' placeholder='Your user name' id='username' name='username' value={formState.username} onChange={handleChange}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label >First Name</Form.Label>
-                        <Form.Control type='input' placeholder='Your first name' id='firstName' name='firstName' />
+                        <Form.Control type='input' placeholder='Your first name' id='firstName' name='firstName' value={formState.firstName} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label >Last Name</Form.Label>
-                        <Form.Control type='input' placeholder='Your last name' id='lastName' name='lastName' />
+                        <Form.Control type='input' placeholder='Your last name' id='lastName' name='lastName' value={formState.lastName} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group >
                         <Form.Label >Email</Form.Label>
-                        <Form.Control type='email' placeholder='Your email' id='email' name='email' />
+                        <Form.Control type='email' placeholder='Your email' id='email' name='email' value={formState.email} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type='password' placeholder='*******' id='password' name='password' />
+                        <Form.Control type='password' placeholder='*******' id='password' name='password' value={formState.password} onChange={handleChange} />
                     </Form.Group>
                     <Button className='submitButton' type='Submit'>
                         Submit
@@ -68,7 +68,7 @@ const Signup = () => {
                 </Form>
             </Card.Body>
         </Card>
-        {/* {error && <div>Sign up failed</div>} */}
+        {error && <div>Sign up failed</div>}
     </main>
   );
 };
