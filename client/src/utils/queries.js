@@ -2,13 +2,14 @@ import gql from 'graphql-tag';
 
 export const QUERY_ITEMS = gql`
     query items() {
-        items() {
+        item {
             _id
             title
             image
             price
             quantity
             likes
+            username
         }
     }
 `;
