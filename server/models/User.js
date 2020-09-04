@@ -32,7 +32,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  items: []
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Item'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password

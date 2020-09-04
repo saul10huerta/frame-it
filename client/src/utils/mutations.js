@@ -39,17 +39,12 @@ export const ADD_FRIEND = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-    mutation addThought($thoughtText: String!) {
-        addThought(thoughtText: $thoughtText) {
-            _id
-            thoughtText
-            createdAt
-            username
-            reactionCount
-            reactions {
-                _id
-            }
+export const ADD_ITEM = gql`
+    mutation addItem($title: String!, $image: String!, $price: Int, $quantity: Int, $status: String) {
+        addItem(title: $title, image: $image, price: $price, quantity: $quantity: status: $status) {
+            title
+        
         }
     }
 `;
+
