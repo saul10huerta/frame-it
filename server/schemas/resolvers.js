@@ -1,5 +1,5 @@
-const { AuthenticationError } = require('apollo-server-express');
 const { User, Item, Order } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 
@@ -80,6 +80,19 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in item!');
+          },
+          removeItem: async (parent, args, context) => {
+            if (context.user) {
+              console.log(context.user.items)
+              const updatedUser = await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $pull: { items: args._id } },
+                { new: true }
+              );
+
+              return updatedUser;
+            }
+            throw new AuthenticationError("You need to be logged in.");
           }
           
     }
