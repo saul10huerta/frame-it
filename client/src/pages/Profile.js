@@ -1,57 +1,78 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import photoOne from '../assets/images/James Hall/JamesHall_1.jpg';
 import photoTwo from '../assets/images/James Hall/JamesHall_2.jpg';
+
+import { Redirect, useParams } from 'react-router-dom';
+import Auth from '../utils/auth';
+
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { REMOVE_ITEM } from '../utils/mutations';
 
 
 
 const Profile = () => {
 
 
+    const { username: userParam } = useParams();
+    const { loading, data } = useQuery(QUERY_ME);
+    const [removeItem, { error }] = useMutation(REMOVE_ITEM);
+
+    const user = data?.me || {};
+
+
+    // function to delete item
+    const handleDeleteItem = async (_id) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+   
+    
+
+        if(!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await removeItem({
+                variables: { _id }
+                
+            });
+            if(error) {
+                throw new Error('something went wrong');
+            }
+        } catch (err) {
+            console.err(err);
+            console.log('remove item error')
+        }
+    };
+
+    if(loading) {
+        return <h2>LOADING...</h2>
+    }
+    
     return (
         <div>
+            <h1>{user.username}</h1>
             <Container fluid>
                 <Row>
+                {user.items.map((item) => {
+
+                return (
                     <Col md={4}>
-                        <h4 className='m-3'>Username</h4>
                         <Image fluid src={photoOne} />
-                        <p className='m-3 font-size:{1rem}'>Title</p>
+                        <p className='m-3 font-size:{1rem}'>{item.title}</p>
+                        <span>{item.status}</span>
+                        <span>Quantity: {item.quantity}</span>
                         <div className='d-flex justify-content-around m-3'>
-                            <span>Price</span>
-                            <Button className='likeButton'>Like</Button>
-                            <Button className='likeButton'>Buy</Button>
+                            <span>${item.price}</span>
+                            <Button className='btn-danger' onClick={() => handleDeleteItem(item._id)}>
+                                Delete
+                            </Button>
+                            
                         </div>
                     </Col>
-                    <Col md={4}>
-                        <h4 className='m-3'>Username</h4>
-                        <Image fluid src={photoTwo} />
-                        <p className='m-3'>Title</p>
-                        <div className='d-flex justify-content-around m-3'>
-                            <span>Price</span>
-                            <Button className='likeButton'>Like</Button>
-                            <Button className='likeButton'>Buy</Button>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <h4 className='m-3'>Username</h4>
-                        <Image fluid src={photoOne} />
-                        <p className='m-3'>Title</p>
-                        <div className='d-flex justify-content-around m-3'>
-                            <span>Price</span>
-                            <Button className='likeButton'>Like</Button>
-                            <Button className='likeButton'>Buy</Button>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <h4 className='m-3'>Username</h4>
-                        <Image fluid src={photoOne} />
-                        <p className='m-3'>Title</p>
-                        <div className='d-flex justify-content-around m-3'>
-                            <span>Price</span>
-                            <Button className='likeButton'>Like</Button>
-                            <Button className='likeButton'>Buy</Button>
-                        </div>
-                    </Col>
+                );
+                })}
                 </Row>
             </Container>
         </div>
