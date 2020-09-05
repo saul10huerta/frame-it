@@ -74,3 +74,14 @@ export const QUERY_ME_BASIC = gql `
         }
     }
 `;
+
+
+export const QUERY_ITEMS = gql`
+    query itemss {
+        _id
+        title
+        price
+        quantity
+        image
+    }
+`

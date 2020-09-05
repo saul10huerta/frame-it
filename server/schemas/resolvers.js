@@ -29,6 +29,10 @@ const resolvers = {
             .populate('items')
             // .populate('thoughts');
         },
+        items: async () => {
+          console.log("resolvers items");
+          return Item.find()
+        },
         // get user logged in
         me: async (parent, args, context) => {
           if(context.user) {
