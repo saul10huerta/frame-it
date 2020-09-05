@@ -38,6 +38,11 @@ const userSchema = new Schema({
       ref: 'Item'
     }
   ]
+},
+{
+  toJSON: {
+    virtuals: true
+  }
 });
 
 // set up pre-save middleware to create password

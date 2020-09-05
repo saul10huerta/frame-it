@@ -41,10 +41,13 @@ export const ADD_FRIEND = gql`
 
 export const ADD_ITEM = gql`
     mutation addItem($title: String!, $image: String!, $price: Int, $quantity: Int, $status: String) {
-        addItem(title: $title, image: $image, price: $price, quantity: $quantity: status: $status) {
+        addItem(title: $title, image: $image, price: $price, quantity: $quantity, status: $status) {
+            _id
             title
-        
+            image
+            price
+            quantity
+            status
         }
     }
 `;
-
