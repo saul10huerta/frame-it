@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model} = require('mongoose');
 
-const { Schema } = mongoose;
+// const { Schema } = mongoose;
 
 const itemSchema = new Schema({
   title: {
@@ -9,7 +9,8 @@ const itemSchema = new Schema({
     trim: true
   },
   image: {
-    type: String
+    type: String,
+    required: true
   },
   price: {
     type: Number,
@@ -21,13 +22,18 @@ const itemSchema = new Schema({
     min: 0,
     default: 0
   },
-  likes: {
-    type: Number,
-    min: 0,
-    default: 0
+  status: {
+    type: String,
+    required: true,
+    trim: true
+  }
+},
+{
+  toJSON: {
+    getters: true
   }
 });
 
-const Item = mongoose.model('Item', itemSchema);
+const Item = model('Item', itemSchema);
 
 module.exports = Item;
