@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import photoOne from '../assets/images/James Hall/JamesHall_1.jpg';
-import photoTwo from '../assets/images/James Hall/JamesHall_2.jpg';
+// import photoTwo from '../assets/images/James Hall/JamesHall_2.jpg';
 
-import { Redirect, useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
+import ItemForm from '../components/ItemForm';
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 import { REMOVE_ITEM } from '../utils/mutations';
 
 
@@ -15,7 +16,7 @@ import { REMOVE_ITEM } from '../utils/mutations';
 const Profile = () => {
 
 
-    const { username: userParam } = useParams();
+    // const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
     const [removeItem, { error }] = useMutation(REMOVE_ITEM);
 
@@ -52,7 +53,10 @@ const Profile = () => {
     
     return (
         <div>
-            <h1>{user.username}</h1>
+            {user.items.length
+            ? `Viewing ${user.username}'s ${user.items.length === 1 ? 'item' : 'items'}:`
+            : "You have no items."}
+            <ItemForm />
             <Container fluid>
                 <Row>
                 {user.items.map((item) => {

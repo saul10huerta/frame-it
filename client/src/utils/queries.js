@@ -1,12 +1,22 @@
 import gql from 'graphql-tag';
 
 export const QUERY_USERS = gql`
-    query users {
-        _id: ID
-        username: String
-        firstName: String
-        lastName: String
-        email: String
+    query {
+        users {
+            _id
+            username
+            firstName
+            lastName
+            email
+            items {
+                _id
+                title
+                image
+                price
+                quantity
+                status
+            }
+        }
     }
 `
 
@@ -52,3 +62,15 @@ export const QUERY_ME = gql`
     }
 `;
 
+export const QUERY_ITEMS = gql`
+    query {
+        items {
+            _id
+            title
+            image
+            price
+            quantity
+            status
+        }
+    }
+`;
