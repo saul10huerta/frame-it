@@ -17,43 +17,43 @@ db.once('open', async () => {
 
   await Item.deleteMany();
   
-  // const items = await Item.insertMany([
-  //   {
-  //     title: 'Black-White Flower',
-  //     image: 'JamesHall_1-sm.jpg',
-  //     price: 75.00,
-  //     quantity: 2,
-  //     likes: 0
-  //   },
-  //   {
-  //     title: 'Succulent',
-  //     image: 'JamesHall_2-sm.jpg',
-  //     price: 55.00,
-  //     quantity: 0,
-  //     likes: 9
-  //   },
-  //   {
-  //     title: 'Skeleton',
-  //     image: 'JamesHall_3-sm.jpg',
-  //     price: 99.00,
-  //     quantity: 4,
-  //     likes: 0
-  //   },
-  //   {
-  //     title: 'Orange Flower',
-  //     image: 'JamesHall_4-sm.jpg',
-  //     price: 29.00,
-  //     quantity: 1,
-  //     likes: 0
-  //   },
-  //   {
-  //     title: 'Red Flower',
-  //     image: 'JamesHall_5-sm.jpg',
-  //     price: 29.00,
-  //     quantity: 4,
-  //     likes: 0
-  //   },
-  // ]);
+  const items = await Item.insertMany([
+    {
+      title: 'Black-White Flower',
+      image: 'JamesHall_1-sm.jpg',
+      price: 75.00,
+      quantity: 2,
+      status: 'For Sale'
+    },
+    {
+      title: 'Succulent',
+      image: 'JamesHall_2-sm.jpg',
+      price: 55.00,
+      quantity: 0,
+      status: 'For Sale'
+    },
+    {
+      title: 'Skeleton',
+      image: 'JamesHall_3-sm.jpg',
+      price: 99.00,
+      quantity: 4,
+      status: 'For Sale'
+    },
+    {
+      title: 'Orange Flower',
+      image: 'JamesHall_4-sm.jpg',
+      price: 29.00,
+      quantity: 1,
+      status: 'For Sale'
+    },
+    {
+      title: 'Red Flower',
+      image: 'JamesHall_5-sm.jpg',
+      price: 29.00,
+      quantity: 4,
+      status: 'For Sale'
+    },
+  ]);
   
   console.log('items seeded');
 
@@ -65,22 +65,7 @@ db.once('open', async () => {
     username: 'JamesHall',
     email: 'jameshall@testmail.com',
     password: 'frameit',
-    items: [
-      {
-        title: 'Black-White Flower',
-        image: 'JamesHall_1-sm.jpg',
-        price: 75.00,
-        quantity: 2,
-        likes: 0
-      },
-      {
-        title: 'Succulent',
-        image: 'JamesHall_2-sm.jpg',
-        price: 55.00,
-        quantity: 0,
-        likes: 9
-      },
-    ]
+    items: []
   });
 
   await User.create({
@@ -89,22 +74,7 @@ db.once('open', async () => {
     username: 'JackRipper',
     email: 'jackripper@testmail.com',
     password: 'frameit',
-    items: [
-      {
-        title: 'Orange Flower',
-        image: 'JamesHall_4-sm.jpg',
-        price: 29.00,
-        quantity: 1,
-        likes: 0
-      },
-      {
-        title: 'Red Flower',
-        image: 'JamesHall_5-sm.jpg',
-        price: 29.00,
-        quantity: 4,
-        likes: 0
-      },
-    ]
+    items: []
   });
 
   console.log('users seeded');
