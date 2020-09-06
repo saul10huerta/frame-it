@@ -43,6 +43,11 @@ const resolvers = {
             return userData;
           }
           throw new AuthenticationError('Not logged in');
+        },
+        items: async () => {
+          return Item.find()
+          .select('-__v -password')
+          .populate('items')
         }
     },
     Mutation: {

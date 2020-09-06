@@ -1,36 +1,45 @@
 import gql from 'graphql-tag';
 
 export const QUERY_USERS = gql`
-    query users {
-        _id: ID
-        username: String
-        firstName: String
-        lastName: String
-        email: String
+    query {
+        users {
+            _id
+            username
+            firstName
+            lastName
+            email
+            items {
+                _id
+                title
+                image
+                price
+                quantity
+                status
+            }
+        }
     }
 `
 
 
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
-      }
+    query user($username: String!) {
+        user(username: $username) {
+            _id
+            username
+            firstName
+            lastName
+            email
+            items {
+                _id
+                title
+                image
+                price
+                quantity
+                status
+            }
+        }
     }
-  }
 `;
 
 export const QUERY_ME = gql`
@@ -38,50 +47,30 @@ export const QUERY_ME = gql`
         me {
             _id
             username
+            firstName
+            lastName
             email
-            friendCount
-            thoughts {
+            items {
                 _id
-                thoughtText
-                createdAt
-                reactionCount
-                reactions {
-                    _id
-                    createdAt
-                    reactionBody
-                    username
-                }
-            }
-            friends {
-                _id
-                username
+                title
+                image
+                price
+                quantity
+                status
             }
         }
     }
 `;
-
-export const QUERY_ME_BASIC = gql `
-    {
-        me {
-            _id
-            username
-            email
-            friendCount
-            friends {
-                _id
-                username
-            }
-        }
-    }
-`;
-
 
 export const QUERY_ITEMS = gql`
-    query itemss {
-        _id
-        title
-        price
-        quantity
-        image
+    query {
+        items {
+            _id
+            title
+            image
+            price
+            quantity
+            status
+        }
     }
-`
+`;

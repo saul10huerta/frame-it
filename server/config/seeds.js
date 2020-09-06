@@ -23,35 +23,35 @@ db.once('open', async () => {
       image: 'JamesHall_1-sm.jpg',
       price: 75.00,
       quantity: 2,
-      likes: 0
+      status: 'For Sale'
     },
     {
       title: 'Succulent',
       image: 'JamesHall_2-sm.jpg',
       price: 55.00,
       quantity: 0,
-      likes: 9
+      status: 'For Sale'
     },
     {
       title: 'Skeleton',
       image: 'JamesHall_3-sm.jpg',
       price: 99.00,
       quantity: 4,
-      likes: 0
+      status: 'For Sale'
     },
     {
       title: 'Orange Flower',
       image: 'JamesHall_4-sm.jpg',
       price: 29.00,
       quantity: 1,
-      likes: 0
+      status: 'For Sale'
     },
     {
       title: 'Red Flower',
       image: 'JamesHall_5-sm.jpg',
       price: 29.00,
       quantity: 4,
-      likes: 0
+      status: 'For Sale'
     },
   ]);
   
