@@ -32,7 +32,17 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  items: []
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Item'
+    }
+  ]
+},
+{
+  toJSON: {
+    virtuals: true
+  }
 });
 
 // set up pre-save middleware to create password

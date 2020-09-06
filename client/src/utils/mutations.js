@@ -25,30 +25,28 @@ export const ADD_USER = gql `
     }
 `;
 
-export const ADD_FRIEND = gql`
-  mutation addFriend($id: ID!) {
-    addFriend(friendId: $id) {
-      _id
-      username
-      friendCount
-      friends {
-        _id
-        username
-      }
+
+
+export const ADD_ITEM = gql`
+    mutation addItem($title: String!, $image: String!, $price: Int, $quantity: Int, $status: String) {
+        addItem(title: $title, image: $image, price: $price, quantity: $quantity, status: $status) {
+            _id
+            title
+            image
+            price
+            quantity
+            status
+        }
     }
-  }
 `;
 
-export const ADD_THOUGHT = gql`
-    mutation addThought($thoughtText: String!) {
-        addThought(thoughtText: $thoughtText) {
-            _id
-            thoughtText
-            createdAt
+export const REMOVE_ITEM = gql`
+    mutation removeItem($_id: ID!) {
+        removeItem(_id: $_id) {
             username
-            reactionCount
-            reactions {
+            items {
                 _id
+                title
             }
         }
     }
