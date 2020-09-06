@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <header>
             <Link to='/'>
-                <h1>Frame bIt</h1>
+                <h1>Frame It</h1>
             </Link>
 
             {Auth.loggedIn() ? (
